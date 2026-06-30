@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link id="theme-vue" rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <link id="theme-buble" rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css" media="none">
+  <link id="theme-dark" rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" media="none">
+  <link rel="stylesheet" href="//unpkg.com/docsify-accordion/src/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-xpost/docsify-xpost.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-dashboard@3.2.0/dist/dashboard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-image-slider@latest/dist/slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/breadcrumb.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/light.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-pro@latest/docsify-sidebar-pro.min.css">
+  
+</head>
+
+
+
+<style>
+  body,
+  .content,
+  .sidebar,
+  .navbar {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .theme-time {
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  link#theme-dark:not([media="none"])~.theme-time {
+    background: #222;
+    color: #ccc;
+    box-shadow: 0 1px 4px #111;
+  }
+
+  /* https://github.com/w3teal/docsify-dark-switcher 暗黑模式切换 */
+  /*:root {
+    --dark-base-background: #222;
+    --dark-base-color: #bbc0c4;
+    --dark-theme-color: var(--theme-color, #42b983);
+    --dark-code-color: var(--dark-color);
+    --dark-heading-color: var(--dark-theme-color);
+    --dark-cover-background: #000000a8;
+    --dark-code-background: #303030;
+    --dark-tip-background: #2c0000;
+    --dark-warn-background: #005842;
+    --dark-icon-size: 25px;
+    --dark-icon-transition: .1s ease-in-out .1s;
+    --dark-moon-color: #000000;
+    --dark-sun-color: #ffffff;
+    --dark-moon-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16'%3E%3Cpath fill='currentColor' d='M9.598 1.591a.749.749 0 0 1 .785-.175 7.001 7.001 0 1 1-8.967 8.967.75.75 0 0 1 .961-.96 5.5 5.5 0 0 0 7.046-7.046.75.75 0 0 1 .175-.786m1.616 1.945a7 7 0 0 1-7.678 7.678 5.499 5.499 0 1 0 7.678-7.678'/%3E%3C/svg%3E");
+    --dark-sun-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16'%3E%3Cpath fill='currentColor' d='M8 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8m0-1.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 0 0 0 5m5.657-8.157a.75.75 0 0 1 0 1.061l-1.061 1.06a.749.749 0 0 1-1.275-.326a.749.749 0 0 1 .215-.734l1.06-1.06a.75.75 0 0 1 1.06 0Zm-9.193 9.193a.75.75 0 0 1 0 1.06l-1.06 1.061a.75.75 0 1 1-1.061-1.06l1.06-1.061a.75.75 0 0 1 1.061 0M8 0a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 8 0M3 8a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 3 8m13 0a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 16 8m-8 5a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 8 13m3.536-1.464a.75.75 0 0 1 1.06 0l1.061 1.06a.75.75 0 0 1-1.06 1.061l-1.061-1.06a.75.75 0 0 1 0-1.061M2.343 2.343a.75.75 0 0 1 1.061 0l1.06 1.061a.751.751 0 0 1-.018 1.042a.751.751 0 0 1-1.042.018l-1.06-1.06a.75.75 0 0 1 0-1.06Z'/%3E%3C/svg%3E");
+  }*/
+</style>
+</head>
+
+<body>
+  <!-- <div style="position: fixed;top:12px;right:20px;z-index:9999;">
+    <button onclick="switchTheme('vue')" style="padding:4px 8px;margin:0 2px;">Vue浅色</button>
+    <button onclick="switchTheme('buble')" style="padding:4px 8px;margin:0 2px;">Buble清新</button>
+    <button onclick="switchTheme('dark')" style="padding:4px 8px;margin:0 2px;">Dark暗黑</button>
+  </div> -->
+
+  <div id="app">
+  </div>
+  <script>
+    function switchTheme(name) {
+      // 1. 获取全部主题link
+      const links = {
+        vue: document.getElementById('theme-vue'),
+        buble: document.getElementById('theme-buble'),
+        dark: document.getElementById('theme-dark')
+      };
+      // 2. 仅把当前激活的主题设为正常媒体，其余全部隐藏
+      Object.keys(links).forEach(key => {
+        if (key === name) {
+          links[key].media = 'all'; // 启用当前选中主题
+        } else {
+          links[key].media = 'none'; // 其余样式静默失效，不清除页面全部样式
+        }
+      });
+      // 持久化存储
+      localStorage.setItem('docsify-theme', name);
+    }
+
+    // 页面加载完成自动恢复上次主题
+    document.addEventListener('DOMContentLoaded', () => {
+      const last = localStorage.getItem('docsify-theme') || 'vue';
+      switchTheme(last);
+    });
+
+    // 脚注配置信息
+    function refreshFooterYear() {
+      const footerEl = document.querySelector('footer.className');
+      if (!footerEl) return;
+      // 动态获取当前年份
+      const currentYear = new Date().getFullYear();
+      footerEl.innerHTML = footerEl.innerHTML.replace('YEAR', currentYear);
+    }
+    document.addEventListener('DOMContentLoaded', refreshFooterYear);
+    window.addEventListener('hashchange', () => {
+      setTimeout(refreshFooterYear, 80);
+    });
+
+    window.$docsify = {
+      name: '✍️个人笔记',       // 左上角标题
+      // logo: '/_media/icon.svg', // 左上角标题对应的logo
+      repo: '1',                 // 右上角github跳转链接
+      // homepage: '/home.md',  //主页文档
+      search: {                   //左上角的搜索框
+        paths: "auto",           //搜索全部
+        placeholder: '🔍搜索...', //搜索框提示文字
+        noData: '暂无结果',       //找不到结果的提示文字
+        hideOtherSidebarContent: true,  //搜索时隐藏侧边目录
+      },
+      copyCode: {                   //复制代码功能
+        buttonText: '点击复制',
+        errorText: '复制失败',
+        successText: '复制成功',
+      },
+      loadNavbar: true,         //开启导航栏    _navbar.md
+      loadSidebar: true,        // 开启侧边栏   _sidebar.md
+      subMaxLevel: 3,           // 侧边栏自动展开几级标题
+      maxLevel: 6,              //允许解析全部 6 级标题，生成锚点链接
+      sidebarDisplayLevel: 0,   //默认自动展开的层级深度：https://github.com/iPeng6/docsify-sidebar-collapse
+      toc: {                    // 右侧目录
+        tocMaxLevel: 0,        // 右侧最多展示4级标题 
+        target: 'h0',    // 只提取二、三、四级标题，忽略#一级大标题
+      },
+      coverpage: false,          //配置自定义封面 _coverpage.md
+      onlyCover: false,          //配置封面和首页是否同时出现
+      mergeNavbar: true,         //在较小的屏幕上，导航栏将与侧边栏合并
+      autoHeader: true,          //添加每个文档的标题页面
+      count: true,               //显示当前的字数
+      timeUpdater: {            //全局配置最后一次修改日期
+        whereToPlace: "bottom", // top=顶部 / bottom=底部
+        text: `<div style="position:fixed;right:20px;bottom:20px;color:#666;font-size:13px;background:#fff;padding:6px 10px;border-radius:6px;box-shadow:0 1px 4px #ddd;">{docsify-updated}</div>`,
+        formatUpdated: function (time) {    //格式化显示最后一次修改的日期
+          const dt = new Date(time);
+          const fmt = new Intl.DateTimeFormat('zh-CN', {
+            timeZone: 'Asia/Shanghai',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+          }).format(dt);
+          return `📅最后更新日期：${fmt}`;
+        },
+      },
+      footer: {                             //脚注配置:https://github.com/erickjx/docsify-footer-enh
+        copy: '<span>&copy; 2026</span>',   //copy信息
+        auth: 'by Eobard Thawne',           //作者信息
+        pre: '<hr/>',                       //pre footer
+        style: 'text-align: center;',       //Footer CSS inline style
+        class: 'className',                 //Footer Classes to include
+      },
+      progress: {                   // 阅读进度条配置:https://github.com/HerbertHe/docsify-progress
+        position: "bottom",           //进度条展示的位置
+        color: "var(--theme-color,#42b983)",//进度条颜色 
+        height: "3px",                      //进度条高度
+      },
+      breadcrumb: {      //每页顶部添加路径信息：https://github.com/FranCarstens/docsify-breadcrumb
+        showHome: false,     //在主页时显示主页链接
+        homeText: 'Home', //主页链接的文本。
+        separator: ' &rsaquo; ',    //每个面包屑物品之间的分隔符>
+        casing: 'capitalize',
+        linkColor: 'var(--theme-color, #42b983)', //面包屑链接的颜色。这可以是任何有效的 CSS 颜色值
+        size: '2em'
+      },
+      hideCode: {        //代码折叠：https://github.com/jl15988/docsify-hide-code
+        scroll: true, // Enable scrolling
+        height: 300 // Max height
+      },
+
+
+
+
+      slider: {
+        // Default options
+        auto: false,
+        intervalTime: 20000,
+        hideToolbar: true,
+      },
+
+
+
+      dashboard: {   // https://github.com/erectbranch/docsify-dashboard
+        numTabContent: 3,
+        metadataUrl: 'test',       // do not include '.json' extension
+        sort: false,                         // sort the posts by time
+        theme: 'list',                    // (1) default, (2) cards, (3) list
+        tagboardTheme: 'default',            // options are same as above
+        categoryTheme: {},
+        pagination: false                    // enable pagination for the dashboard
+      },
+      plugins: [
+        function pageFooter(hook, vm) {
+          var footer = [
+            '<!-- tag-list -->',
+            '<hr/>',
+          ].join('');
+
+          hook.afterEach(function (html) {
+            return html + footer;
+          });
+        },
+      ],
+
+      tabs: {
+        persist: true, // default
+        sync: true, // default
+        theme: 'classic', // default
+        tabComments: true, // default
+        tabHeadings: true // default
+      },
+
+
+      vueGlobalOptions: {
+        data() {
+          return {}
+        }
+      },
+
+    }
+
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4.11.4"></script>
+  <script src="https://unpkg.com/docsify-copy-code@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-updated@1/src/time-updater.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-dashboard@3.2.0/dist/docsify-dashboard.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script>
+  <script src="//unpkg.com/docsify-accordion/src/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-xpost/docsify-xpost.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-image-slider@latest/dist/docsify-image-slider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/index.min.js"></script>
+  <!-- <script src="//cdn.jsdelivr.net/gh/LIGMATV/docsify-dark-switcher@latest/docsify-dark-switcher.js"></script> -->
+  <script src="https://unpkg.com/docsify-hide-code"></script>
+  <!-- <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script> -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <script src="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
+
+</body>
+
+</html>
