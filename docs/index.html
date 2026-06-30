@@ -138,7 +138,7 @@
       coverpage: false,          //配置自定义封面 _coverpage.md
       onlyCover: false,          //配置封面和首页是否同时出现
       mergeNavbar: true,         //在较小的屏幕上，导航栏将与侧边栏合并
-      autoHeader: true,          //添加每个文档的标题页面
+      autoHeader: false,          //添加每个文档的标题页面
       count: true,               //显示当前的字数
       timeUpdater: {            //全局配置最后一次修改日期
         whereToPlace: "bottom", // top=顶部 / bottom=底部
@@ -208,9 +208,7 @@
         function pageFooter(hook, vm) {
           var footer = [
             '<!-- tag-list -->',
-            '<hr/>',
           ].join('');
-
           hook.afterEach(function (html) {
             return html + footer;
           });
