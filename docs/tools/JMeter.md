@@ -60,7 +60,7 @@ language=zh_CN
 * Ramp-Up 时间（秒）：N个线程会在**X秒内逐步全部启动**，匀速加压，计算公式：`N线程 ÷ X秒 = 每秒新增Y个用户`
 * 循环次数：循环指定次数或直到调度器的持续时间结束
 
-<img src="JMeter_images/image-20260622160044743.png" alt="image-20260622160044743" style="zoom:67%;" /> 
+![image-20260701110332526](JMeter_images/image-20260701110332526.png) 
 
 
 
