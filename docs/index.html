@@ -121,8 +121,10 @@
       setTimeout(refreshFooterYear, 80);
     });
 
+    const isGithubPages = window.location.hostname.includes('github.io');
     window.$docsify = {
       name: '✍️个人笔记',       // 左上角标题
+      basePath: isGithubPages ? '/blog_docsify/' : '/',
       relativePath: true,        // 相对路径从当前文件目录解析
       // logo: '/_media/icon.svg', // 左上角标题对应的logo
       repo: 'https://github.com/EobardThawne721/blog_docsify',                 // 右上角github跳转链接
@@ -245,27 +247,50 @@
           });
         },
         // 修复 img 标签相对路径，使其在 Docsify 中正确加载
+        // function fixImgRelativePath(hook, vm) {
+        //   hook.doneEach(function () {
+        //     const path = vm.route.path;
+        //     if (!path || path.length < 2) return;
+            
+        //     const pathParts = path.split('/').filter(p => p && p !== '#');
+        //     const directory = pathParts.length > 1 ? pathParts.slice(0, -1).join('/') : '';
+        //     if (!directory) return;
+            
+        //     const images = document.querySelectorAll('.markdown-section img');
+        //     images.forEach(img => {
+        //       const src = img.getAttribute('src');
+        //       if (!src) return;
+        //       if (src.startsWith('/') || src.startsWith('http') || src.startsWith('data:')) return;
+        //       if (src.startsWith('./')) {
+        //         img.setAttribute('src', `/${directory}/${src.slice(2)}`);
+        //       } else if (src.startsWith('../')) {
+        //         img.setAttribute('src', `/${directory}/${src}`);
+        //       } else {
+        //         img.setAttribute('src', `/${directory}/${src}`);
+        //       }
+        //     });
+        //   });
+        // },
         function fixImgRelativePath(hook, vm) {
           hook.doneEach(function () {
-            const path = vm.route.path;
-            if (!path || path.length < 2) return;
-            
-            const pathParts = path.split('/').filter(p => p && p !== '#');
-            const directory = pathParts.length > 1 ? pathParts.slice(0, -1).join('/') : '';
-            if (!directory) return;
-            
-            const images = document.querySelectorAll('.markdown-section img');
+            const basePath = window.$docsify ?.basePath || "/";
+            const routePath = vm.route.path;
+            if (!routePath || routePath.length < 2) return;
+
+            const pathParts = routePath.split("/").filter(p => p && p !== "#");
+            const currentDir = pathParts.length > 1 ? pathParts.slice(0, -1).join("/") : "";
+            if (!currentDir) return;
+
+            const images = document.querySelectorAll(".markdown-section img");
             images.forEach(img => {
-              const src = img.getAttribute('src');
-              if (!src) return;
-              if (src.startsWith('/') || src.startsWith('http') || src.startsWith('data:')) return;
-              if (src.startsWith('./')) {
-                img.setAttribute('src', `/${directory}/${src.slice(2)}`);
-              } else if (src.startsWith('../')) {
-                img.setAttribute('src', `/${directory}/${src}`);
-              } else {
-                img.setAttribute('src', `/${directory}/${src}`);
-              }
+              const rawSrc = img.getAttribute("src");
+              if (!rawSrc) return;
+              // 跳过绝对路径、网络图片、base64
+              if (/^(\/|http|data:)/.test(rawSrc)) return;
+
+              const baseUrl = new URL(`${basePath}${currentDir}/`, window.location.origin);
+              const targetUrl = new URL(rawSrc, baseUrl);
+              img.setAttribute("src", targetUrl.pathname);
             });
           });
         },
