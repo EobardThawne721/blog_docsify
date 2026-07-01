@@ -126,9 +126,9 @@ show create table 表名
 | 数据类型  | 格式                     | 描述     |
 | --------- | ------------------------ | -------- |
 | date      | YYYY-MM-DD               | 日期值   |
-| time      | HH:MM:SS                 | 时间值   |
+| time      | **`HH:MM:SS`**           | 时间值   |
 | year      | YYYY                     | 年份值   |
-| datetime  | YYYY-MM-DD HH:MM:SS      | 具体时间 |
+| datetime  | `YYYY-MM-DD HH:MM:SS`    | 具体时间 |
 | timestamp | 年月日时分秒构成的时间戳 | 时间戳   |
 
 ```mysql
@@ -284,9 +284,9 @@ select 字段1 [as '别名'],.... from 表名;
 select 字段列表 from 表名 where 条件;
 ```
 
-<img src="./MySQL_images/image-20260314215605310.png" alt="image-20260314215605310" style="zoom:50%;" /> 
+<img src="MySQL_images/image-20260314215605310.png" alt="image-20260314215605310" style="zoom:50%;" /> 
 
-<img src="./MySQL_images/image-20260314215617160.png" alt="image-20260314215617160" style="zoom:53%;" /> 
+<img src="MySQL_images/image-20260314215617160.png" alt="image-20260314215617160" style="zoom:53%;" /> 
 
 **注意：`between 最小值 and 最大值`不能交换最小值和最大值的顺序，否则查询不到**
 
