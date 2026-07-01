@@ -8,8 +8,7 @@
 * [📀 数据库](/)
 * [💩 Python](#)
     * [Python基础](/python/Python基础.md)
-    * [人工智能篇](#)
-        * [Python基础](/python/Python基础.md)
+    * [人工智能篇](/python/ai/)
 * [💻 运维相关](#)
     * [Nginx使用](/ops/Nginx使用.md)
     * [Linux操作系统](/ops/Linux.md)
@@ -23,7 +22,3 @@
     * [数据结构 & 算法(C语言版)](/algorithms/数据结构.md)
     * [leetcode算法(Java语言版)](/algorithms/算法.md)
     * [设计模式(Java语言版)](/algorithms/设计模式.md)
-- 网络
-  - 协议模型
-    - tcp
-  - [TCP/IP](#)

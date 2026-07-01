@@ -2,6 +2,35 @@
 # Headline
 
 
+https://github.com/fzankl/docsify-plugin-flexible-alerts
+
+
+
+> [!NOTE|label:My own heading|iconVisibility:hidden]
+> An alert of type 'tip' using alert specific style 'flat' which overrides global style 'callout'.
+> In addition, this alert uses an own heading and hides specific icon.
+
+> [!NOTE]
+> An alert of type 'note' using global style 'callout'.
+
+> [!NOTE|style:flat]
+> An alert of type 'note' using alert specific style 'flat' which overrides global style 'callout'.
+
+> [!NOTE]
+> An alert of type 'note' using global style 'callout'.
+
+> [!TIP]
+> An alert of type 'tip' using global style 'callout'.
+
+> [!WARNING]
+> An alert of type 'warning' using global style 'callout'.
+
+> [!IMPORTANT]
+> An alert of type 'important' using global style 'callout'.
+
+> [!ATTENTION]
+> An alert of type 'attention' using global style 'callout'.
+
 官方文档：https://docsify.js.org/#/configuration
 
 > An awesome project.111
@@ -30,12 +59,33 @@
 
 #### **Bold**
 
-https://jhildenbiddle.github.io/docsify-tabs/#/?id=customization
+  https://jhildenbiddle.github.io/docsify-tabs/#/?id=customization
 
 #### **<em>Italic</em>**
 
-...
+  12312
+
 <!-- tabs:end -->
+
+
+#### **Badge <span class="tab-badge">New!</span>**
+
+<!-- tabs:start -->
+
+#### **English**
+
+Hello!
+
+#### **French**
+
+Bonjour!
+
+#### **Italian**
+
+Ciao!
+
+<!-- tabs:end -->
+
 
 
 PDF插件:
@@ -86,7 +136,7 @@ Nice to meet you! Hello, docsify-xpost!
 <!-- x:end -->
 
 
-11
+
 
 <!-- dashboard -->
 
