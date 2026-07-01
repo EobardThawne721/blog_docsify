@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-breadcrumb@latest/dist/breadcrumb.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/light.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-pro@latest/docsify-sidebar-pro.min.css">
+  <!-- 侧边栏：二选一样式 -->
+  <!-- <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-pro@latest/docsify-sidebar-pro.min.css"> -->
+  <link  rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css"  />
   
 </head>
 
@@ -43,6 +45,15 @@
     color: #ccc;
     box-shadow: 0 1px 4px #111;
   }
+
+  /* 面包屑内所有a标签，hover时取消下划线 */
+  .breadcrumb a {
+  text-decoration: none !important;
+  }
+  .breadcrumb a:hover {
+  text-decoration: none !important;
+  }
+
 
   /* https://github.com/w3teal/docsify-dark-switcher 暗黑模式切换 */
   /*:root {
@@ -76,13 +87,12 @@
   </div>
   <script>
     function switchTheme(name) {
-      // 1. 获取全部主题link
+      // 1.切换页面主主题
       const links = {
         vue: document.getElementById('theme-vue'),
         buble: document.getElementById('theme-buble'),
         dark: document.getElementById('theme-dark')
       };
-      // 2. 仅把当前激活的主题设为正常媒体，其余全部隐藏
       Object.keys(links).forEach(key => {
         if (key === name) {
           links[key].media = 'all'; // 启用当前选中主题
@@ -208,6 +218,7 @@
         pagination: false                    // enable pagination for the dashboard
       },
       plugins: [
+        // 页面脚注配置
         function pageFooter(hook, vm) {
           var footer = [
             '<!-- tag-list -->',
@@ -216,6 +227,19 @@
             return html + footer;
           });
         },
+        // 禁用导航栏链接
+        function disableBreadcrumbLink(hook, vm) {
+          hook.doneEach(function () {
+            const breadLinks = document.querySelectorAll('.breadcrumb a');
+            breadLinks.forEach(a => {
+              a.href = '#';
+              // 阻止默认跳转行为
+              a.onclick = function (e) {
+                e.preventDefault();
+              }
+            })
+          })
+        }
       ],
 
       tabs: {
