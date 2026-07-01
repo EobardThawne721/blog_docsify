@@ -9,6 +9,7 @@
 * [💩 Python](#)
     * [Python基础](/python/Python基础.md)
     * [人工智能篇](/python/ai/)
+    * [语音算法篇](/python/speech/)
 * [💻 运维相关](#)
     * [Nginx使用](/ops/Nginx使用.md)
     * [Linux操作系统](/ops/Linux.md)
