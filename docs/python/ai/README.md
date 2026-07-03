@@ -1,7 +1,10 @@
 # 人工智能篇
+> [!TIP|label:基本框架]
+> - [Pytorch](/python/ai/Pytorch.md)
 
 > [!TIP|label:卷积神经网络|style:flat]
 > - [CNN卷积神经网络](/python/ai/nn/CNN卷积神经网络.md)
+> - [Transformer](/python/ai/nn/Transformer.md)
 
 
 > [!NOTE|label:生成式网络|style:flat]
