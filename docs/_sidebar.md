@@ -6,7 +6,7 @@
 * [💀 后端](#)
     * [📱 安卓开发](/backend/AndroidStudio.md)
     * [☕ Java基础篇](/backend/standard/)
-    * [👻 Java框架篇](/java/framework.md)
+    * [👻 Java框架篇](/backend/framework/)
 * [📀 数据库](#)
     * [MySQL数据库](/db/MySQL.md)
 * [💩 Python](#)
