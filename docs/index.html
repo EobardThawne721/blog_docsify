@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/light.css">
   <!-- 侧边栏：二选一样式 -->
   <!-- <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-pro@latest/docsify-sidebar-pro.min.css"> -->
-  <link  rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css"  />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
 
 </head>
 
@@ -47,10 +47,11 @@
 
   /* 面包屑内所有a标签，hover时取消下划线 */
   .breadcrumb a {
-  text-decoration: none !important;
+    text-decoration: none !important;
   }
+
   .breadcrumb a:hover {
-  text-decoration: none !important;
+    text-decoration: none !important;
   }
 
   /* https://github.com/w3teal/docsify-dark-switcher 暗黑模式切换 */
@@ -75,12 +76,6 @@
 </head>
 
 <body>
-  <!-- <div style="position: fixed;top:12px;right:20px;z-index:9999;">
-    <button onclick="switchTheme('vue')" style="padding:4px 8px;margin:0 2px;">Vue浅色</button>
-    <button onclick="switchTheme('buble')" style="padding:4px 8px;margin:0 2px;">Buble清新</button>
-    <button onclick="switchTheme('dark')" style="padding:4px 8px;margin:0 2px;">Dark暗黑</button>
-  </div> -->
-
   <div id="app">
   </div>
   <script>
@@ -254,11 +249,11 @@
         //   hook.doneEach(function () {
         //     const path = vm.route.path;
         //     if (!path || path.length < 2) return;
-            
+
         //     const pathParts = path.split('/').filter(p => p && p !== '#');
         //     const directory = pathParts.length > 1 ? pathParts.slice(0, -1).join('/') : '';
         //     if (!directory) return;
-            
+
         //     const images = document.querySelectorAll('.markdown-section img');
         //     images.forEach(img => {
         //       const src = img.getAttribute('src');
@@ -309,7 +304,9 @@
               }
             })
           })
-        }
+        },
+        // PDF路径兼容basePath插件
+
       ],
 
       tabs: {
@@ -355,10 +352,10 @@
 
 
 
-<!-- PDF预览依赖 -->
-<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js"></script>
-<!-- 更换jsdelivr稳定源，避免unpkg 404 -->
-<script src="https://cdn.jsdelivr.net/npm/docsify-pdf-embed-plugin@latest/src/docsify-pdf-embed.min.js"></script>
+  <!-- PDF预览依赖 -->
+  <script src="https://cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js"></script>
+  <!-- 更换jsdelivr稳定源，避免unpkg 404 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pdf-embed-plugin@latest/src/docsify-pdf-embed.min.js"></script>
 </body>
 
 </html>
