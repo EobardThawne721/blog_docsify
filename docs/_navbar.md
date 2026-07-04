@@ -13,5 +13,5 @@
 
 * 主题切换
   - <a href="javascript:;" onclick="switchTheme('vue');return false;">Vue浅色</a>
-  - <a href="javascript:;" onclick="switchTheme('buble');return false;">Buble清新</a>
+  <!-- - <a href="javascript:;" onclick="switchTheme('buble');return false;">Buble清新</a> -->
   - <a href="javascript:;" onclick="switchTheme('dark');return false;">Dark暗黑</a>
