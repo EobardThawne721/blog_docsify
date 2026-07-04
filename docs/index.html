@@ -234,7 +234,8 @@
               '#/python/ai/',
               '#/python/speech/',
               '#/backend/standard/',
-              '#/backend/framework/'
+              '#/backend/framework/',
+              '#/backend/docs/'
             ];
             folderPaths.forEach(path => {
               const links = document.querySelectorAll(`.sidebar-nav a[href="${path}"]`);
@@ -351,6 +352,13 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
   <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+
+
+
+<!-- PDF预览依赖 -->
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js"></script>
+<!-- 更换jsdelivr稳定源，避免unpkg 404 -->
+<script src="https://cdn.jsdelivr.net/npm/docsify-pdf-embed-plugin@latest/src/docsify-pdf-embed.min.js"></script>
 </body>
 
 </html>
