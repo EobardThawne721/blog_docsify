@@ -9,6 +9,7 @@
     * [👻 Java框架篇](/backend/framework/)
 * [📀 数据库](#)
     * [MySQL数据库](/db/MySQL.md)
+    * [Redis非关系型数据库](/db/Redis.md)
 * [💩 Python](#)
     * [Python基础](/python/Python基础.md)
     * [人工智能篇](/python/ai/)
