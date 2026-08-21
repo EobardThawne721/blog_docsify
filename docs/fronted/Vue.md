@@ -245,6 +245,78 @@ console.log(arr);
 
 ## promise异步编排
 
+> **Promise内部类似于生产者executor，最多只能真正生效一次：`要么调用 resolve，要么调用 reject`**
+>
+> * 调用`resolve(返回的数据)` → Promise变成**成功 (fulfilled)**
+>
+> * 调用`reject(错误)` → Promise 变成**失败 (rejected)**
+>
+> ![image-20260821105609395](Vue_images/image-20260821105609395.png)
+
+```js
+new Promise(resolve => resolve("done")) //返回done字符串
+
+new Promise((resolve, reject) => {
+      resolve("done");	//返回done字符串
+  	  reject(new Error("…")); // ❌完全无效，状态已经定死，忽略
+});
+
+new Promise((resolve,reject)=>{
+  reject(new Error('出错')); // ✔生效：状态变成失败
+  resolve(666);             // ❌无效，改不了
+})
+
+
+new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        resolve("成功")
+    },1000)
+
+    reject("出错") // ❗这行是同步代码，立刻执行！比定时器快得多，所以最终状态变为rejected 
+})
+```
+
+
+
+### .then
+
+>  **`then`方法内部返回的值会作为全新Promise对象（即永远会返回一个新的Promise对象，实现无限套娃）的resolve值，交给下一个then，因为`then`默认只接收 resolve，失败会交给`catch`**
+>
+> * return **普通值**：下一个 then立刻拿到这个值执行
+> * return **Promise 对象**：链条会等待这个异步做完，再跑下一个 then
+
+```js
+new Promise(resolve => resolve(1))//当前Promise的resolve返回1
+.then(v => v + 1)   // 生成新的promise的resolve返回2
+.then(v => console.log(v)); // 生成新的promise的resolve返回undefined，因为没有返回新的数据
+```
+
+
+
+### .catch
+
+> **catch只捕获 Promise 走向 rejected状态**
+
+```js
+new Promise((resolve,reject)=>{
+  reject(new Error("出错啦"))
+}).catch(err=>{
+  console.log(err)
+})
+
+new Promise(resolve => resolve(1))  // 返回新的Promise，不会进入catch
+	.then(v => {
+    	throw new Error("then里面抛出错误");	//返回新的Promise，会执行reject方法，进入catch
+	})
+    .catch(err => {
+        console.log(err.message); // then里面抛出的错误
+    })
+```
+
+
+
+#### eg：ajax请求
+
 ```js
  //Ajax中成功使用resolve(data)，交给then处理;失败使用reject(err)，交给catch处理p.then().catch()
         let p=new Promise((resolve,reject)=>{
@@ -322,7 +394,7 @@ let p = new Promise((resolve, reject) => {
 
 
 
-### 轻微封装ajax请求
+#### 轻微封装ajax请求
 
 ```js
  function get(url, data) { 
@@ -360,12 +432,91 @@ let p = new Promise((resolve, reject) => {
 
 
 
+### async/await
+
+#### async
+
+> **被async修饰的函数，必然返回一个Promise对象**
+>
+> * **如果函数正常执行，返回的是Promise.resolve(data)**
+> * **如果函数内部报错，返回是Promise.reject(error)**
+
+```JS
+async function fn() { 
+    return x 
+}
+// 等价于
+function fn() { 
+    return Promise.resolve(x) 
+}
+
+
+async function fn() { 
+    throw err 
+}
+//等价于
+function fn() { 
+    return Promise.reject(err) 
+}
+```
+
+
+
+#### await
+
+> **只能被写在async修饰的函数内部，等待指定Promise对象状态变成fulfilled /rejected后继续执行后续代码**
+>
+> * **Promise 成功：取出resolve里面的返回值，继续往下执行；**
+> * **Promise 失败：直接在 await 这一行抛出异常（throw error），后面代码不再执行，需要`try/catch`捕获。**
+
+```js
+async function loadJson(url) { 
+  let response = await fetch(url); // 等待fetch方法拿到资源，解析里面的数据后继续往下执行
+
+  if (response.status == 200) {
+    let json = await response.json(); // 等待获取json()数据后，解析里面的数据继续往下执行
+    return json;					  //返回由Promise包裹的json对象，后续需要获取此数据，需要then方法或其它await
+  }
+
+  throw new Error(response.status); //如果上面有异常，直接返回由Promise包裹的reject
+}
+
+//调用
+loadJson('https://javascript.info/no-such-user.json').catch(alert); 
+```
+
+==注意：async、await适用于某一段逻辑，必须等异步操作完成之后，才允许继续往下执行（渲染页面、赋值、后续请求）==
+
+```js
+// js是解释型语言，把请求发送出去后会直接向下执行，此时请求可能还没完成，这时userRef.value赋值就是undefined
+const user=getById(id)
+userRef.value=user
+
+// 如果使用async、await配合，那么就必须等待请求完成后才会赋值，此时userRef.value就会得到真正的数据
+const user=await getById(id)
+userRef.value=user
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## export、import模块化(重点)
 
 > **在一个模块中export、import可以有多个（export 可以导出多个命名模块），export default仅有一个**
 >
-> * **输出多个值，使用export**
-> * **输出单个值，使用export default**
+> * **输出多个值、对象、方法，使用export，import时必须带上`{}`**
+> * **输出单个值、对象、方法，使用export default，import时不需要`{}`**
 > * **export default与普通的export最好不要同时使用**
 
 <font color=red>类似于java的导包功能</font>
@@ -404,6 +555,22 @@ export default {
 
 
 
+`utils.js`
+
+> 一个公共的暴露的全局工具包，它将其它文件聚合并导出，后续只需要从utils导入对应名称即可
+
+```tsx
+// 将helpers.js里面的login/logout方法从工具类里面导出 
+export {login, logout} from './helpers.js';
+
+// 将默认导出重新导出为 User
+export {default as User} from './user.js';
+```
+
+
+
+
+
 `main.js`
 
 ```js
@@ -416,13 +583,16 @@ import utils from './fun.js'
 //导入fun.js的对象并起名为print
 import print from './fun.js'
 
+// 直接从工具类中导入多个其它包的方法
+import {login, logout,User} from './utils.js'
+
 console.log(name + " " + age);
 console.log(add(1, 3));
 console.log(utils.ouput("eobard"));
 console.log(print.printf("thawne"));
 ```
 
-> **`注意:如果导出的时候没有用default关键字，则导入的时候必须和导出的变量名对应;只有用了default关键字，则导入的时候可以自定义名字`**
+> **`注意:如果导出的时候没有用default关键字，则导入的时候必须和导出的变量名对应;只有用了default关键字，则导入时可以自定义名字`**
 
 
 
