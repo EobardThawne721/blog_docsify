@@ -2,6 +2,7 @@
 
 * [🏠 主页](/)
 * [👑 前端](#)
+    * [JS](/fronted/JS.md)
     * [VUE](/fronted/Vue.md)
 * [💀 后端](#)
     * [📱 安卓开发](/backend/AndroidStudio.md)
