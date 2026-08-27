@@ -1,8 +1,59 @@
-# Vue2
+# Vue
 
-## 环境搭建
+## 常用知识
 
-### 简单方式
+### 导入其它项目
+
+1. 首先将别人的项目复制到对应的工作区
+2. 删除里面的node_modules文件夹
+3. 在终端中输入命令npm install 重新安装即可
+4. 安装完成后直接运行
+
+
+
+###  动态获取后端请求地址
+
+> **在前端项目中，通常需要请求后端网关地址跳转不同的微服务中，而有些页面需要拿到请求后端的地址，我们如果在页面中写死url，网关地址一变，就需要把写死的url跟着变，所以可以在对应页面中，动态获取前端请求后端的url**
+
+![image-20230713105213613](./Vue_images/image-20230713105213613.png)
+
+![image-20230713105319988](./Vue_images/image-20230713105319988.png)
+
+>  **使用`process.env.VUE_APP_BASE_API`即可动态获取请求路径**
+
+
+
+
+
+### Vue项目打包
+
+1. 首先需要更改生产环境中的后端请求路径
+
+![image-20230719122724413](./Vue_images/image-20230719122724413.png)
+
+
+
+2. 执行打包
+
+> **dist就是打包后的文件，后期可以直接将该文件夹放入nginx的html文件夹中，启动nginx就可以访问**
+
+```bash
+ npm run build:prod
+```
+
+![image-20230719122821336](./Vue_images/image-20230719122821336.png)
+
+![image-20230719122949050](./Vue_images/image-20230719122949050.png)
+
+
+
+
+
+## Vue2
+
+### 环境搭建
+
+#### 简单方式
 
 `1.导入vue.js`
 
@@ -52,7 +103,7 @@
 
 `3.页面显示`
 
-![image-20211227202338174](Vue_images/image-20211227202338174.png) 
+![image-20211227202338174](./Vue_images/image-20211227202338174.png) 
 
 > **注意：在Vue对象里面调用全局变量属性时(如钩子函数、自定义函数)，都要用`this.全局属性名`来引用**
 
@@ -60,7 +111,7 @@
 
 
 
-### npm方式
+#### npm方式
 
 1. 在vscode 创建英文名文件夹
 2. 通过终端初始化项目
@@ -102,7 +153,7 @@ npm install vue@2
     </script>
 ```
 
-![image-20230112123722282](Vue_images/image-20230112123722282.png) 
+![image-20230112123722282](./Vue_images/image-20230112123722282.png) 
 
 
 
@@ -112,9 +163,9 @@ npm install vue@2
 
 
 
-## 输出表达式
+### 输出表达式
 
-### {{xx}} 插值表达式输出
+#### {{xx}} 插值表达式输出
 
 > **插值表达式只能用于标签体里面，不能用于标签的属性值里面**
 
@@ -164,11 +215,11 @@ npm install vue@2
 
 `2.页面显示`
 
-![image-20211227202417690](Vue_images/image-20211227202417690.png) 
+![./image-20211227202417690](./Vue_images/image-20211227202417690.png) 
 
 
 
-### v-text输出纯文本
+#### v-text输出纯文本
 
 `1.页面代码`
 
@@ -213,11 +264,11 @@ npm install vue@2
 
 `2.页面显示`
 
-![image-20211227202521108](Vue_images/image-20211227202521108.png) 
+![image-20211227202521108](./Vue_images/image-20211227202521108.png) 
 
 
 
-### v-html输出标签
+#### v-html输出标签
 
 `1.页面代码`
 
@@ -262,13 +313,13 @@ npm install vue@2
 
 `2.页面显示`
 
-![image-20211227202612674](Vue_images/image-20211227202612674.png) 
+![image-20211227202612674](./Vue_images/image-20211227202612674.png) 
 
 
 
 
 
-### v-show元素显示与隐藏
+#### v-show元素显示与隐藏
 
 > **v-show只是改变了元素的display**
 
@@ -291,7 +342,7 @@ npm install vue@2
 </script>
 ```
 
-![image-20240620233607928](Vue_images/image-20240620233607928.png)
+![image-20240620233607928](./Vue_images/image-20240620233607928.png)
 
 
 
@@ -301,9 +352,9 @@ npm install vue@2
 
 
 
-### v-bind 或 :属性名 绑定属性
+#### v-bind 或 :属性名 绑定属性
 
-#### 简单绑定属性值
+##### 简单绑定属性值
 
 `1.页面代码`
 
@@ -336,11 +387,11 @@ npm install vue@2
 
 `2.页面显示`
 
-![image-20211228165333982](Vue_images/image-20211228165333982.png) 
+![image-20211228165333982](./Vue_images/image-20211228165333982.png) 
 
 
 
-#### 动态绑定属性值
+##### 动态绑定属性值
 
 `1.页面代码`
 
@@ -378,11 +429,11 @@ npm install vue@2
 
 `2.页面显示`
 
-![image-20230112181205296](Vue_images/image-20230112181205296.png) 
+![image-20230112181205296](./Vue_images/image-20230112181205296.png) 
 
 
 
-##### 属性叠加（重要）
+###### 属性叠加（重要）
 
 > **当元素默认有属性值的时候，可以通过绑定属性值进行属性值的追加**
 
@@ -421,13 +472,13 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 * 当isCheck=false， isRed=true时
 
-![image-20240620232705842](Vue_images/image-20240620232705842.png)
+![image-20240620232705842](./Vue_images/image-20240620232705842.png)
 
 
 
 * 当isCheck=true， isRed=false时
 
-![image-20240620232812506](Vue_images/image-20240620232812506.png)
+![image-20240620232812506](./Vue_images/image-20240620232812506.png)
 
 
 
@@ -435,9 +486,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 
 
-## 循环遍历
+### 循环遍历
 
-### 遍历数组
+#### 遍历数组
 
 `1.页面代码`
 
@@ -469,7 +520,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面显示`
 
-![image-20211227203018311](Vue_images/image-20211227203018311.png) 
+![./image-20211227203018311](./Vue_images/image-20211227203018311.png) 
 
 
 
@@ -479,7 +530,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 
 
-###  遍历对象数组集合
+####  遍历对象数组集合
 
 `1.页面代码`
 
@@ -527,13 +578,13 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面结果`
 
-![image-20211227203246932](Vue_images/image-20211227203246932.png) 
+![./image-20211227203246932](./Vue_images/image-20211227203246932.png) 
 
 
 
 
 
-### 提高Vue渲染效率(重点)
+#### 提高Vue渲染效率(重点)
 
 ```html
 <!--	在for遍历的时候可以加上:key=“唯一属性值”来提高Vue渲染效率
@@ -564,9 +615,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 
 
-## 判断条件
+### 判断条件
 
-### if、else
+#### if、else
 
 > **v-if是直接判断是否显示元素在页面中，与v-show不同，v-show改变的是display属性**
 
@@ -600,7 +651,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面显示`
 
-![image-20211227203648017](Vue_images/image-20211227203648017.png) 
+![./image-20211227203648017](./Vue_images/image-20211227203648017.png) 
 
 
 
@@ -618,11 +669,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 
 
+### v-model双向模型绑定
 
-
-## v-model双向模型绑定
-
-### 输入框
+#### 输入框
 
 `1.页面代码`
 
@@ -653,13 +702,13 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面显示`
 
-![image-20211227204929089](Vue_images/image-20211227204929089.png) 
+![./image-20211227204929089](./Vue_images/image-20211227204929089.png) 
 
 
 
 
 
-### 多选框
+#### 多选框
 
 `1.页面代码`
 
@@ -691,7 +740,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面显示`
 
-![image-20230112182218446](Vue_images/image-20230112182218446.png)
+![./image-20230112182218446](./Vue_images/image-20230112182218446.png)
 
 
 
@@ -701,9 +750,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 
 
-## 事件处理
+### 事件处理
 
-### v-on 或 @事件 绑定事件
+#### v-on 或 @事件 绑定事件
 
 `1.页面代码`
 
@@ -749,7 +798,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面显示`
 
-![image-20211227205509600](Vue_images/image-20211227205509600.png) 
+![image-20211227205509600](./Vue_images/image-20211227205509600.png) 
 
 
 
@@ -773,13 +822,13 @@ import HelloWorld from "./components/HelloWorld.vue";
     </script>
 ```
 
-![image-20230112125030625](Vue_images/image-20230112125030625.png) ![image-20230112125040404](Vue_images/image-20230112125040404.png)
+![image-20230112125030625](./Vue_images/image-20230112125030625.png) ![image-20230112125040404](./Vue_images/image-20230112125040404.png)
 
 
 
 
 
-### 钩子函数
+#### 钩子函数
 
 ​				生命周期函数(钩子函数)：页面初始化立即加载
 
@@ -806,7 +855,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 `2.页面显示`
 
-![image-20211228165605306](Vue_images/image-20211228165605306.png) 
+![image-20211228165605306](./Vue_images/image-20211228165605306.png) 
 
 
 
@@ -814,13 +863,13 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 eg：初始化时调用其它函数
 
-![image-20211228165830058](Vue_images/image-20211228165830058.png) 
+![image-20211228165830058](./Vue_images/image-20211228165830058.png) 
 
 
 
 
 
-### computed计算属性
+#### computed计算属性
 
 > **某些数据变化时需要去做一些逻辑操作，用于类似于购物车数量增加的总价问题**
 
@@ -859,13 +908,13 @@ eg：初始化时调用其它函数
 
 `2.页面结果`
 
-![image-20230113105642500](Vue_images/image-20230113105642500.png) 
+![image-20230113105642500](./Vue_images/image-20230113105642500.png) 
 
-![image-20230113105705780](Vue_images/image-20230113105705780.png) 
+![image-20230113105705780](./Vue_images/image-20230113105705780.png) 
 
 
 
-### watch监听器
+#### watch监听器
 
 > **用于类似于购物车商品数量不能小于1需求**
 
@@ -931,19 +980,19 @@ eg：初始化时调用其它函数
 
 `2.页面结果`
 
-![image-20230113111230107](Vue_images/image-20230113111230107.png) 
+![image-20230113111230107](./Vue_images/image-20230113111230107.png) 
 
-![image-20230113111239860](Vue_images/image-20230113111239860.png) 
+![image-20230113111239860](./Vue_images/image-20230113111239860.png) 
 
-![image-20230113111251278](Vue_images/image-20230113111251278.png) 
-
-
+![image-20230113111251278](./Vue_images/image-20230113111251278.png) 
 
 
 
-### axios无刷新调用
 
-#### get请求
+
+#### axios无刷新调用
+
+##### get请求
 
 > **axios.get( url路径 ).then( response => {    //回调函数，请求成功后具体代码实现     }   )**
 
@@ -967,15 +1016,15 @@ eg：初始化时调用其它函数
 
 `2.页面结果`
 
-![image-20211228180244373](Vue_images/image-20211228180244373.png) 
+![image-20211228180244373](./Vue_images/image-20211228180244373.png) 
 
 
 
 
 
-## 使用Vue脚手架进行开发
+### 使用Vue脚手架进行开发
 
-###  环境准备
+####  环境准备
 
 ```bash
 #全局安装webpack
@@ -992,15 +1041,15 @@ vue init webpack 项目名
 
 
 
-### 信息填写
+#### 信息填写
 
-![image-20230115203442743](Vue_images/image-20230115203442743.png)
-
-
+![image-20230115203442743](./Vue_images/image-20230115203442743.png)
 
 
 
-### 运行项目
+
+
+#### 运行项目
 
 1. 进入对应的文件夹
 2. 运行项目
@@ -1011,15 +1060,15 @@ npm run dev
 
 3. 运行效果
 
-![image-20230115203659065](Vue_images/image-20230115203659065.png) 
+![image-20230115203659065](./Vue_images/image-20230115203659065.png) 
 
-![image-20230115204106916](Vue_images/image-20230115204106916.png) 
-
-
+![image-20230115204106916](./Vue_images/image-20230115204106916.png) 
 
 
 
-### 自定义路由组件
+
+
+#### 自定义路由组件
 
 1. 编写.vue文件
 
@@ -1096,7 +1145,7 @@ export default new Router({
 
 3. 运行项目测试
 
-![image-20230115211741415](Vue_images/image-20230115211741415.png)  
+![image-20230115211741415](./Vue_images/image-20230115211741415.png)  
 
 
 
@@ -1111,7 +1160,7 @@ export default new Router({
 
 
 
-### 自定义组件（重点）
+#### 自定义组件（重点）
 
 1. 编写抽取组件的公共部分.vue
 
@@ -1172,9 +1221,9 @@ export default new Router({
 
 
 
-## 整合ElementUI
+### 整合ElementUI
 
-### 环境准备
+#### 环境准备
 
 ```bash
 npm i element-ui
@@ -1193,7 +1242,7 @@ Vue.use(ElementUI);
 
 
 
-###  使用
+####  使用
 
 ```html
 <template>
@@ -1221,7 +1270,7 @@ export default {
 </script>
 ```
 
-![image-20230115215809164](Vue_images/image-20230115215809164.png) 
+![image-20230115215809164](./Vue_images/image-20230115215809164.png) 
 
 
 
@@ -1229,66 +1278,21 @@ export default {
 
 
 
-## 常用知识
-
-### 导入其它项目
-
-1. 首先将别人的项目复制到对应的工作区
-2. 删除里面的node_modules文件夹
-3. 在终端中输入命令npm install 重新安装即可
-4. 安装完成后直接运行
-
-
-
-###  动态获取后端请求地址
-
-> **在前端项目中，通常需要请求后端网关地址跳转不同的微服务中，而有些页面需要拿到请求后端的地址，我们如果在页面中写死url，网关地址一变，就需要把写死的url跟着变，所以可以在对应页面中，动态获取前端请求后端的url**
-
-![image-20230713105213613](Vue_images/image-20230713105213613.png)
-
-![image-20230713105319988](Vue_images/image-20230713105319988.png)
-
->  **使用`process.env.VUE_APP_BASE_API`即可动态获取请求路径**
-
-
-
-
-
-### Vue项目打包
-
-1. 首先需要更改生产环境中的后端请求路径
-
-![image-20230719122724413](Vue_images/image-20230719122724413.png)
-
-
-
-2. 执行打包
-
-> **dist就是打包后的文件，后期可以直接将该文件夹放入nginx的html文件夹中，启动nginx就可以访问**
-
-```bash
- npm run build:prod
-```
-
-![image-20230719122821336](Vue_images/image-20230719122821336.png)
-
-![image-20230719122949050](Vue_images/image-20230719122949050.png)
 
 
 
 
 
 
+## Vue3
 
-# Vue3
-
-## 在线vue项目编写
+### 在线vue项目编写
 
 https://vite.new/vue
 
 
 
-## 使用vite+vue3创建项目
+### 使用vite+vue3创建项目
 
 > **首先全局安装pnpm**
 
@@ -1304,25 +1308,25 @@ npm i pnpm -g
 pnpm create vite
 ```
 
-![image-20240620190111650](Vue_images/image-20240620190111650.png)
+![image-20240620190111650](./Vue_images/image-20240620190111650.png)
 
-![image-20240620190135340](Vue_images/image-20240620190135340.png)
+![image-20240620190135340](./Vue_images/image-20240620190135340.png)
 
-![image-20240620190207932](Vue_images/image-20240620190207932.png)
+![image-20240620190207932](./Vue_images/image-20240620190207932.png)
 
-![image-20240620190313085](Vue_images/image-20240620190313085.png)
+![image-20240620190313085](./Vue_images/image-20240620190313085.png)
 
-![image-20240620190346378](Vue_images/image-20240620190346378.png)
+![image-20240620190346378](./Vue_images/image-20240620190346378.png)
 
-![image-20240620190336587](Vue_images/image-20240620190336587.png)
-
-
+![image-20240620190336587](./Vue_images/image-20240620190336587.png)
 
 
 
-### 项目文件介绍
 
-![image-20240620192542595](Vue_images/image-20240620192542595.png) 
+
+#### 项目文件介绍
+
+![image-20240620192542595](./Vue_images/image-20240620192542595.png) 
 
 * **node_modules：第三方依赖的一个文件夹**
 * **public：公共资源**
@@ -1340,7 +1344,7 @@ pnpm create vite
 
 
 
-#### 端口号、文件映射路径配置
+##### 端口号、文件映射路径配置
 
 > **修改vite.config.js配置**
 
@@ -1373,7 +1377,7 @@ export default defineConfig({
 
 在vscode中直接使用v3p即可创建基本的结构
 
-![](./Vue_images/image-20241111203251007.png) 
+![1](./Vue_images/image-20241111203251007.png) 
 
 
 
@@ -1381,9 +1385,9 @@ export default defineConfig({
 
 
 
-## Options API、CompositionAPI
+### Options API、CompositionAPI
 
-### 选项式API
+#### 选项式API
 
 > 选项式 API 是 Vue 2 中的默认方式，将组件的数据、计算属性、方法、生命周期钩子等功能按照选项的形式进行组织，例如 `data`、`methods`、`computed`、`watch` 等。每个选项都有其特定的职责，把组件的逻辑分散在不同的选项中。
 
@@ -1437,7 +1441,7 @@ export default {
 
 
 
-### 组合式API
+#### 组合式API
 
 > 组合式API是 Vue.js 3.x 中引入的新特性，旨在解决选项式API在复杂组件中难以维护的问题。组合式API允许将组件的逻辑按照功能相关性进行组织，而不是按照选项分散组织（`将相关代码写在一起，不同于选项式API那种拆开的方式`）
 >
@@ -1445,7 +1449,7 @@ export default {
 
 
 
-#### vue 3.0的写法
+##### vue 3.0的写法
 
 ```vue
 <template>
@@ -1477,13 +1481,13 @@ export default {
 
 ![image-20240622223052954](./Vue_images/image-20240622223052954.png)
 
-##### 注意
+###### 注意
 
 > **需要被模板使用的数据和方法，需要return出去，如果不return出去却在模板上使用了，会在控制台报错**
 
 ![image-20240622223233424](./Vue_images/image-20240622223233424.png)
 
-![image-20240622223254847](./Vue_images/image-20240622223254847.png)
+![image-202406222232548471](./Vue_images/image-20240622223254847.png)
 
 
 
@@ -1491,7 +1495,7 @@ export default {
 
 
 
-#### vue 3.2的写法(重点)
+##### vue 3.2的写法(重点)
 
 > **在vue3.2中直接使用语法糖`<script setup>`即可，自动会被模板解包，不需要手动return**
 
@@ -1534,7 +1538,7 @@ export default {
 
 
 
-### 不使用setup语法糖模版（重点）
+#### 不使用setup语法糖模版（重点）
 
 ```vue
 <script>
@@ -1577,7 +1581,7 @@ export default {
 
 
 
-### setup语法糖的define方法
+#### setup语法糖的define方法
 
 * **defineProps：用于接收父组件传来的 props属性，等同于不使用语法糖的props属性**
 * **defineEmits：用于子组件触发事件并告知父组件，等同于不使用语法糖的context.emit属性**
@@ -1585,7 +1589,7 @@ export default {
 
 ​	
 
-#### defineProps
+##### defineProps
 
 ```vue
 <!--父组件-->
@@ -1622,15 +1626,15 @@ import { watch } from 'vue';
 </script>
 ```
 
-![image-20250902234610702](Vue_images/image-20250902234610702.png)
+![image-20250902234610702](./Vue_images/image-20250902234610702.png)
 
-![image-20250902234614488](Vue_images/image-20250902234614488.png)
-
-
+![image-20250902234614488](./Vue_images/image-20250902234614488.png)
 
 
 
-#### defineEmits
+
+
+##### defineEmits
 
 ```VUE
 <!--父组件-->
@@ -1670,13 +1674,13 @@ const sub = () => {
 </script>
 ```
 
-![image-20250902234645603](Vue_images/image-20250902234645603.png)
+![image-20250902234645603](./Vue_images/image-20250902234645603.png)
 
-![image-20250902234651652](Vue_images/image-20250902234651652.png)
+![image-20250902234651652](./Vue_images/image-20250902234651652.png)
 
 
 
-#### defineExpose
+##### defineExpose
 
 ```vue
 <!--父组件-->
@@ -1727,7 +1731,7 @@ const sub = () => {
 
 
 
-## 路由基本配置
+### 路由基本配置
 
 > **安装路由依赖**
 
@@ -1737,17 +1741,17 @@ pnpm install vue-router
 
 
 
-### 视图创建
+#### 视图创建
 
 1. 在src下创建views文件夹并创建对应页面文件
 
-![image-20240621172044602](Vue_images/image-20240621172044602.png)
+![image-20240621172044602](./Vue_images/image-20240621172044602.png)
 
 
 
 
 
-### 路由入口文件配置
+#### 路由入口文件配置
 
 2. 在src下创建router文件夹并创建路由入口文件index.js
 
@@ -1799,7 +1803,7 @@ export default router
 
 
 
-### Layout布局文件
+#### Layout布局文件
 
 3. 在src中创建layout文件夹并创建全局布局文件Layout.vue
 
@@ -1832,7 +1836,7 @@ import {routes} from "../router"
 
 
 
-### 根组件渲染Layout布局
+#### 根组件渲染Layout布局
 
 4. 在顶级根组件App.vue中渲染布局页面
 
@@ -1863,7 +1867,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 
 
-### 路由引入
+#### 路由引入
 
 5. 在全局入口文件main.js中导入路由
 
@@ -1890,9 +1894,9 @@ app.mount('#app')
 
 
 
-![image-20240621173124728](Vue_images/image-20240621173124728.png)
+![image-20240621173124728](./Vue_images/image-20240621173124728.png)
 
-![image-20240621173137182](Vue_images/image-20240621173137182.png)
+![image-20240621173137182](./Vue_images/image-20240621173137182.png)
 
 > **默认显示用户页面**
 
@@ -1902,9 +1906,9 @@ app.mount('#app')
 
 
 
-## 响应式数据
+### 响应式数据
 
-### ref基本类型
+#### ref基本类型
 
 > **1. ref创建基本数据类型，ref创建的数据改变时会同步渲染视图，但简单数据不会（简单数据只能通过双向绑定v-model才可同步渲染视图）；2. 在模板中会自动解包ref的value属性，而不需要在模板中手动调用value属性；3. ref也可以创建引用类型的数据，它会自动解包成reactive类型**
 
@@ -1933,7 +1937,7 @@ app.mount('#app')
 </script>
 ```
 
-![image-20240625211329624](Vue_images/image-20240625211329624.png) ![image-20240625211335733](Vue_images/image-20240625211335733.png)![image-20240625211357731](Vue_images/image-20240625211357731.png)
+![image-20240625211329624](./Vue_images/image-20240625211329624.png) ![image-20240625211335733](./Vue_images/image-20240625211335733.png)![image-20240625211357731](./Vue_images/image-20240625211357731.png)
 
 
 
@@ -1945,7 +1949,7 @@ app.mount('#app')
 
 
 
-#### ref获取dom
+##### ref获取dom
 
 > **ref获取dom元素一定要等到页面挂载后才能拿到**
 
@@ -1974,13 +1978,13 @@ onMounted(()=>{
 </script>
 ```
 
-![image-20240625135422805](Vue_images/image-20240625135422805.png) 
+![image-20240625135422805](./Vue_images/image-20240625135422805.png) 
 
 
 
 
 
-#### ref使用父调子组件方法
+##### ref使用父调子组件方法
 
 ```vue
 <template>
@@ -2018,13 +2022,13 @@ defineExpose({
 </script>
 ```
 
-![image-20240625141307942](Vue_images/image-20240625141307942.png) 
+![image-20240625141307942](./Vue_images/image-20240625141307942.png) 
 
 
 
 
 
-### reactive引用类型
+#### reactive引用类型
 
 > **1. reactive创建引用类型的响应式数据，如对象、数组等，访问时直接使用对象.属性即可；2. 与vue2不同，当直接修改、删除reactive对象属性的时候模板也会更新；3. 当创建基本数据类型时控制台会有警告**
 
@@ -2060,19 +2064,17 @@ const num=reactive(1)
 </script>
 ```
 
-![image-20240625212416067](Vue_images/image-20240625212416067.png)
+![image-20240625212416067](./Vue_images/image-20240625212416067.png)
 
-![image-20240625212327674](Vue_images/image-20240625212327674.png)
+![image-20240625212327674](./Vue_images/image-20240625212327674.png)
 
-![image-20240625212335223](Vue_images/image-20240625212335223.png)
+![image-20240625212335223](./Vue_images/image-20240625212335223.png)
 
-![image-20240625212342955](Vue_images/image-20240625212342955.png)
+![image-20240625212342955](./Vue_images/image-20240625212342955.png)
 
-![image-20240625212349876](Vue_images/image-20240625212349876.png)
+![image-20240625212349876](./Vue_images/image-20240625212349876.png)
 
-![image-20240625212358250](Vue_images/image-20240625212358250.png)
-
-
+![image-20240625212358250](./Vue_images/image-20240625212358250.png)
 
 
 
@@ -2080,7 +2082,9 @@ const num=reactive(1)
 
 
 
-### reactive转为ref
+
+
+#### reactive转为ref
 
 > **转换为ref响应式的数据和原数据具备响应式链条（当reactive改变，ref也会改变；ref改变，reactive也改变）**
 
@@ -2116,19 +2120,19 @@ console.log(id.value+" "+name.value);
 </script>
 ```
 
-![image-20240625203833517](Vue_images/image-20240625203833517.png)
+![image-20240625203833517](./Vue_images/image-20240625203833517.png)
 
-![image-20240625203441732](Vue_images/image-20240625203441732.png) 
+![image-20240625203441732](./Vue_images/image-20240625203441732.png) 
 
-![image-20240625203500983](Vue_images/image-20240625203500983.png) 
+![image-20240625203500983](./Vue_images/image-20240625203500983.png) 
 
-![image-20240625203514281](Vue_images/image-20240625203514281.png) 
-
-
+![image-20240625203514281](./Vue_images/image-20240625203514281.png) 
 
 
 
-### reactive转为原始对象
+
+
+#### reactive转为原始对象
 
 ```vue
 <template>
@@ -2149,13 +2153,13 @@ console.log(p);
 </script>
 ```
 
-![image-20240626202731854](Vue_images/image-20240626202731854.png) 
+![image-20240626202731854](./Vue_images/image-20240626202731854.png) 
 
 
 
 
 
-## 计算属性computed
+### 计算属性computed
 
 > **当数据未发生变化时，计算属性会具备缓存功能，即后面再次访问相同的数据还是第一次经过计算属性得到的结果**
 
@@ -2189,19 +2193,19 @@ function doubleNum() {
 </script>
 ```
 
-![image-20240626204922362](Vue_images/image-20240626204922362.png)![image-20240626204914247](Vue_images/image-20240626204914247.png) 
+![image-20240626204922362](./Vue_images/image-20240626204922362.png)![image-20240626204914247](./Vue_images/image-20240626204914247.png) 
 
  
 
 
 
-## watch监听器
+### watch监听器
 
 > **watch监听到数据变化，立马执行回调函数里面的逻辑；watch监听的如果是响应式对象，内部会自动解包.value；即监听的数据要么是ref类型、要么是reactive类型、要么是 ()=>返回的类型（即非响应式对象(eg:props)则需要提供getter(eg:()=>... )）**
 
 
 
-### 监听单个值
+#### 监听单个值
 
 ```vue
 <template>
@@ -2242,17 +2246,17 @@ watch(
 </script>
 ```
 
-![image-20240627133100771](Vue_images/image-20240627133100771.png)
+![image-20240627133100771](./Vue_images/image-20240627133100771.png)
 
-![image-20240627133111874](Vue_images/image-20240627133111874.png)
+![image-20240627133111874](./Vue_images/image-20240627133111874.png)
 
-![image-20240627133116883](Vue_images/image-20240627133116883.png)
-
-
+![image-20240627133116883](./Vue_images/image-20240627133116883.png)
 
 
 
-### 监听多个值
+
+
+#### 监听多个值
 
 ```vue
 <template>
@@ -2281,17 +2285,17 @@ watch([num, () => person.id], (newVal, oldVal) => {
 </script>
 ```
 
-![image-20240627133221669](Vue_images/image-20240627133221669.png)
+![image-20240627133221669](./Vue_images/image-20240627133221669.png)
 
-![image-20240627133232503](Vue_images/image-20240627133232503.png)
+![image-20240627133232503](./Vue_images/image-20240627133232503.png)
 
-![image-20240627133227630](Vue_images/image-20240627133227630.png)
-
-
+![image-20240627133227630](./Vue_images/image-20240627133227630.png)
 
 
 
-### 立即执行监听
+
+
+#### 立即执行监听
 
 > **当立即执行监听的时候，num在生命周期开始时是undefined，但是当执行到const num = ref(10)时就发生了改变，所以执行了监听回调函数逻辑**
 
@@ -2328,11 +2332,11 @@ watch(
 </script>
 ```
 
-![image-20240627133333654](Vue_images/image-20240627133333654.png)
+![image-20240627133333654](./Vue_images/image-20240627133333654.png)
 
 
 
-### watchEffect副作用监听器
+#### watchEffect副作用监听器
 
 > **副作用监听器在初始化的时候就会执行回调函数里面的代码，如果回调函数里面有响应式数据发生变化，同样会再次执行监听，`与watch中的immediate立即执行一致`**
 
@@ -2358,9 +2362,9 @@ watchEffect(()=>{
 
 
 
-## 生命周期
+### 生命周期
 
-### **选项式API的写法（了解）**
+#### **选项式API的写法（了解）**
 
 ```vue
 <template>
@@ -2394,7 +2398,7 @@ export default {
 
 
 
-### **组合式API的写法（重点）**
+#### **组合式API的写法（重点）**
 
 > **组合式API的生命周期在选项式API前加了on，即onXxx（）命名**
 
@@ -2435,7 +2439,7 @@ onUpdated(() => {
 </script>
 ```
 
-![](./Vue_images/image-20241111201831246.png) 
+![12](./Vue_images/image-20241111201831246.png) 
 
 
 
@@ -2443,17 +2447,7 @@ onUpdated(() => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-## 组件传值
+### 组件传值
 
 > **vue3默认引入defineEmits和defineProps，所以不用在页面import**
 
@@ -2465,9 +2459,9 @@ onUpdated(() => {
 
 
 
-### 父传子
+#### 父传子
 
-#### 示例1：全使用语法糖
+##### 示例1：全使用语法糖
 
 **父组件**
 
@@ -2512,13 +2506,13 @@ import { ref } from 'vue'
 </script>
 ```
 
-![image-20240620202551241](Vue_images/image-20240620202551241.png)
+![image-20240620202551241](./Vue_images/image-20240620202551241.png)
 
 
 
 
 
-#### 示例2：子组件不使用语法糖
+##### 示例2：子组件不使用语法糖
 
 ```vue
 <!--父组件:使用setup语法糖简略-->
@@ -2564,25 +2558,25 @@ export default {
 </script>
 ```
 
-![image-20250902233902846](Vue_images/image-20250902233902846.png)
+![image-20250902233902846](./Vue_images/image-20250902233902846.png)
 
-![image-20250902233910326](Vue_images/image-20250902233910326.png)
-
-
+![image-20250902233910326](./Vue_images/image-20250902233910326.png)
 
 
 
 
 
-#### FastCrud框架的局部组件传值
+
+
+##### FastCrud框架的局部组件传值
 
 **父组件**
 
-![image-20240705202418661](Vue_images/image-20240705202418661.png)
+![image-20240705202418661](./Vue_images/image-20240705202418661.png)
 
-![image-20240705202517429](Vue_images/image-20240705202517429.png) 
+![image-20240705202517429](./Vue_images/image-20240705202517429.png) 
 
-![image-20240705202531295](Vue_images/image-20240705202531295.png) 
+![image-20240705202531295](./Vue_images/image-20240705202531295.png) 
 
 
 
@@ -2590,23 +2584,23 @@ export default {
 
 **子组件**
 
-![image-20240705202632082](Vue_images/image-20240705202632082.png)
+![image-20240705202632082](./Vue_images/image-20240705202632082.png)
 
-![image-20240705202646400](Vue_images/image-20240705202646400.png) 
+![image-20240705202646400](./Vue_images/image-20240705202646400.png) 
 
 
 
 > **具体的监听代码写到setup里面**
 
-![image-20240705202714390](Vue_images/image-20240705202714390.png) 
+![image-20240705202714390](./Vue_images/image-20240705202714390.png) 
 
-![image-20240705202726160](Vue_images/image-20240705202726160.png) 
+![image-20240705202726160](./Vue_images/image-20240705202726160.png) 
 
 
 
 ##### 总结
 
-![image-20260509204228751](Vue_images/image-20260509204228751.png)
+![image-20260509204228751](./Vue_images/image-20260509204228751.png)
 
 
 
@@ -2616,9 +2610,9 @@ export default {
 
 
 
-### 子传父
+#### 子传父
 
-#### 示例1：全使用语法糖
+##### 示例1：全使用语法糖
 
 **子组件**
 
@@ -2686,17 +2680,17 @@ const getCount=(value)=>{
 </script>
 ```
 
-![image-20240620204022069](Vue_images/image-20240620204022069.png)
+![image-20240620204022069](./Vue_images/image-20240620204022069.png)
 
-![image-20240620204031930](Vue_images/image-20240620204031930.png)
-
-
+![image-20240620204031930](./Vue_images/image-20240620204031930.png)
 
 
 
 
 
-#### 示例2：子组件不使用语法糖
+
+
+##### 示例2：子组件不使用语法糖
 
 ```vue
 <!--父组件:使用setup语法糖简略-->
@@ -2763,7 +2757,7 @@ export default {
 
 
 
-### expose和attrs
+#### expose和attrs
 
 ```vue
 <!--父组件:使用setup语法糖简略-->
@@ -2843,25 +2837,25 @@ export default {
 </script>
 ```
 
-![image-20250902234436746](Vue_images/image-20250902234436746.png)
+![image-20250902234436746](./Vue_images/image-20250902234436746.png)
 
-![image-20250902234441757](Vue_images/image-20250902234441757.png)
-
-
+![image-20250902234441757](./Vue_images/image-20250902234441757.png)
 
 
 
 
 
-### v-model父子组件双向绑定
-
-![image-20241111212021189](Vue_images/image-20241111212021189.png)
 
 
+#### v-model父子组件双向绑定
+
+![image-20241111212021189](./Vue_images/image-20241111212021189.png)
 
 
 
-#### modelValue和update:modelValue（了解）
+
+
+##### modelValue和update:modelValue（了解）
 
 **父组件**
 
@@ -2911,7 +2905,7 @@ function changeMsg(){
 </script>
 ```
 
-![](./Vue_images/image-20241111212149948.png) ![](./Vue_images/image-20241111212200508.png)
+![11](./Vue_images/image-20241111212149948.png) ![22](./Vue_images/image-20241111212200508.png)
 
 > **上面这种方式不够灵活，命名固定不可修改**
 
@@ -2921,7 +2915,7 @@ function changeMsg(){
 
 
 
-#### 自定义v-model 属性名
+##### 自定义v-model 属性名
 
 **父组件**
 
@@ -2967,12 +2961,12 @@ function changeMsg(){
 </script>
 ```
 
-![](Vue_images/image-20241111213046996.png)![image-20241111213023051](Vue_images/image-20241111213023051.png)
+![2024111121304](./Vue_images/image-20241111213046996.png)![image-20241111213023051](./Vue_images/image-20241111213023051.png)
 
 
 
 
 
-### TODO:
+## TODO:
 
 目前看到了：[23-实现选项卡_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1bh4y1b7hq?spm_id_from=333.788.videopod.sections&vd_source=6ce2a6eb6cbcb840f00c1778af71ce3c)
